@@ -1,6 +1,6 @@
 module Cat
        ( getCat
-       , getCatUrl
+       , getCatLink
        ) where
 
 import qualified Data.ByteString.Lazy as LBS
@@ -17,8 +17,8 @@ api_url = "http://thecatapi.com/api/images/get?format=src&type=gif"
 getCat :: IO LBS.ByteString
 getCat = getResponseBody <$> (httpLBS $ parseRequest_ api_url)
 
-getCatUrl :: IO String
-getCatUrl = do
+getCatLink :: IO String
+getCatLink = do
   manager <- newManager defaultManagerSettings
 
   request <- parseRequest api_url
